@@ -7,7 +7,8 @@
 #include <iostream>
 #include <iomanip>
 #include <map>
-
+#include <string>
+using namespace std;
 using namespace cv;
 using std::map;
 
