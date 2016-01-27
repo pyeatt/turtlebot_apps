@@ -7,8 +7,10 @@
 #include <pano_core/Extrinsics.h>
 #include <pano_core/pano_interfaces.h>
 
+#include <opencv2/xfeatures2d.hpp>
 #include <opencv2/opencv.hpp>
 using namespace cv;
+using namespace xfeatures2d;
 
 namespace pano
 {
@@ -24,7 +26,8 @@ public:
   void detect(cv::FeatureDetector& detector);
 
   template<typename DescriptorMatcherT>
-    void extract(const cv::DescriptorExtractor& extractor, const DescriptorMatcher& matcher)
+  //  void extract(const cv::DescriptorExtractor& extractor, const DescriptorMatcher& matcher)
+    void extract(BriefDescriptorExtractor& extractor, DescriptorMatcherT &matcher)
     {
       features_.extract(extractor, images_.grey(), matcher);
     }
