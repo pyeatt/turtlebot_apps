@@ -116,7 +116,9 @@ cv::Ptr<ImageAtom> CaptureEngine::onNewFrame(const cv::Mat& frame)
   atom_.images().load(frame);
   atom_.detect(*detector_);
  // atom_.extract(BriefDescriptorExtractor(), BruteForceMatcher<Hamming> ());
-    atom_.extract(BriefDescriptorExtractor(), BFMatcher(NORM_HAMMING));
+  BriefDescriptorExtractor extractor;
+  BFMatcher bfm(NORM_HAMMING);
+  atom_.extract(extractor,bfm);
 
   //tracker will return an estimated R by matching against a prior that it stores.
   atom_.extrinsics() = prior_tracker_.track(atom_, *fitter_, &fit_result);
