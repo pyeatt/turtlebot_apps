@@ -18,7 +18,7 @@ public:
 
   ImageAtom(const Camera& camera, const Images& images);
 
-  void detect(const cv::FeatureDetector& detector);
+  void detect(cv::FeatureDetector& detector);
 
   template<typename DescriptorMatcherT>
     void extract(const cv::DescriptorExtractor& extractor, const DescriptorMatcherT& matcher)
