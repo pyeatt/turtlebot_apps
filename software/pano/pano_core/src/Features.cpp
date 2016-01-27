@@ -17,7 +17,7 @@ void Features::detect(const cv::FeatureDetector& detect, const cv::Mat& img)
  // KeyPointsToPoints(kpts_, pts_);
 }
 
-void Features::extract(const cv::DescriptorExtractor& extract, const cv::Mat& img)
+void Features::extract(cv::DescriptorExtractor& extract, const cv::Mat& img)
 {
   extract.compute(img, kpts_, descriptors_);
   KeyPointsToPoints(kpts_, pts_);
