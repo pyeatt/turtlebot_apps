@@ -44,7 +44,7 @@ ImageAtom::ImageAtom(const Camera& camera, const Images& images) :
 //  camera_.setCameraIntrinsics(nK,Mat(),camera_.img_size());
 //  return nK;
 //}
-void ImageAtom::detect(const cv::FeatureDetector& detector)
+void ImageAtom::detect(cv::FeatureDetector& detector)
 {
   features_.detect(detector, images_.grey());
 }
