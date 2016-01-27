@@ -1,8 +1,8 @@
 #include <pano_core/Features.h>
 #include <pano_core/feature_utils.h>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
+#include <opencv2/opencv.hpp>
+#include <vector>
+using namespace std;
 using namespace cv;
 namespace pano
 {
