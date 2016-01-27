@@ -54,7 +54,7 @@ public:
     }
 
   template<typename T>
-    void extract(const cv::DescriptorExtractor& extracter, const cv::Mat& img, const T& matcher)
+    void extract(cv::DescriptorExtractor& extracter, const cv::Mat& img, const T& matcher)
     {
       addMatcher(matcher);
       extract(extracter, img);
