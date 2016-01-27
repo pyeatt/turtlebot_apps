@@ -41,7 +41,7 @@ public:
     return *this;
   }
 
-  void detect(const cv::FeatureDetector& detect, const cv::Mat& img);
+  void detect(cv::FeatureDetector& detect, const cv::Mat& img);
 
   cv::Ptr<cv::DescriptorMatcher> makeMatcher() const{
     return matcher_->clone(true);//matcher_copier_->clone(*matcher_);
