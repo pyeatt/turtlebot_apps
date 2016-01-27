@@ -10,6 +10,33 @@
 #include <pano_core/ModelFitter.h>
 using namespace cv;
 using namespace std;
+
+
+namespace cv
+{
+
+  Mat windowedMatchingMask( const vector<KeyPoint>& keypoints1, const vector<KeyPoint>& keypoints2,
+			    float maxDeltaX, float maxDeltaY )
+  {
+    if( keypoints1.empty() || keypoints2.empty() )
+      return Mat();
+
+    int n1 = (int)keypoints1.size(), n2 = (int)keypoints2.size();
+    Mat mask( n1, n2, CV_8UC1 );
+    for( int i = 0; i < n1; i++ )
+      {
+        for( int j = 0; j < n2; j++ )
+	  {
+            Point2f diff = keypoints2[j].pt - keypoints1[i].pt;
+            mask.at<uchar>(i, j) = std::abs(diff.x) < maxDeltaX && std::abs(diff.y) < maxDeltaY;
+	  }
+      }
+    return mask;
+  }
+}
+
+
+
 namespace pano
 {
 static int uid_gen = 0;
