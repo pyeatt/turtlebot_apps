@@ -13,6 +13,8 @@
 #endif
 #include "opencv2/highgui/highgui.hpp"
 #include <iomanip>
+#include <vector>
+using namespace std;
 
 using namespace cv;
 using std::cout;
