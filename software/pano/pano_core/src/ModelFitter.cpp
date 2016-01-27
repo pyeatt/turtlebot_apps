@@ -8,6 +8,8 @@
 #include <stdint.h>
 #include <iostream>
 #include <algorithm>
+#include <string>
+using namespace std;
 
 #include <pano_core/ModelFitter.h>
 #include <pano_core/feature_utils.h>
