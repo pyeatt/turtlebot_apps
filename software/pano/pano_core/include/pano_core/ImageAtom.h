@@ -21,7 +21,7 @@ public:
   void detect(const cv::FeatureDetector& detector);
 
   template<typename DescriptorMatcherT>
-    void extract(const cv::DescriptorExtractor& extractor, const DescriptorMatcherT& matcher)
+    void extract(cv::DescriptorExtractor& extractor, const DescriptorMatcherT& matcher)
     {
       features_.extract(extractor, images_.grey(), matcher);
     }
