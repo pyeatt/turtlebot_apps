@@ -7,6 +7,9 @@
 #include <pano_core/Extrinsics.h>
 #include <pano_core/pano_interfaces.h>
 
+#include <opencv2/opencv.hpp>
+using namespace cv;
+
 namespace pano
 {
 class ImageAtom : public drawable, public serializable
@@ -21,7 +24,7 @@ public:
   void detect(cv::FeatureDetector& detector);
 
   template<typename DescriptorMatcherT>
-    void extract(const cv::DescriptorExtractor& extractor, const DescriptorMatcherT& matcher)
+    void extract(const cv::DescriptorExtractor& extractor, const DescriptorMatcher& matcher)
     {
       features_.extract(extractor, images_.grey(), matcher);
     }
