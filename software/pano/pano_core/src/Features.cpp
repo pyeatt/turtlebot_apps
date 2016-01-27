@@ -11,7 +11,7 @@ Features::Features()
 {
 }
 
-void Features::detect(const cv::FeatureDetector& detect, const cv::Mat& img)
+void Features::detect(cv::FeatureDetector& detect, const cv::Mat& img)
 {
   detect.detect(img, kpts_);
  // KeyPointsToPoints(kpts_, pts_);
