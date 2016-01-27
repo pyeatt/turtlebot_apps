@@ -10,8 +10,10 @@
 
 #include <opencv2/highgui/highgui.hpp>
 #include<opencv2/legacy/legacy.hpp>
+#include <opencv2/xfeatures2d.hpp>
 
 using namespace cv;
+using namespace xfeatures2d;
 using namespace std;
 namespace pano
 {
@@ -104,7 +106,8 @@ cv::Ptr<ImageAtom> CaptureEngine::onNewFrame(const cv::Mat& frame)
   else
   {
     cerr << "empty frame in capture engine! " << endl;
-    return 0;
+    cv::Ptr<ImageAtom> null;
+    return null;
   }
   FitterResult fit_result;
   std::list<AtomPair> result;
@@ -112,7 +115,9 @@ cv::Ptr<ImageAtom> CaptureEngine::onNewFrame(const cv::Mat& frame)
 
   atom_.images().load(frame);
   atom_.detect(*detector_);
-  atom_.extract(BriefDescriptorExtractor(), BruteForceMatcher<Hamming> ());
+ // atom_.extract(BriefDescriptorExtractor(), BruteForceMatcher<Hamming> ());
+    atom_.extract(BriefDescriptorExtractor(), BFMatcher(NORM_HAMMING));
+
   //tracker will return an estimated R by matching against a prior that it stores.
   atom_.extrinsics() = prior_tracker_.track(atom_, *fitter_, &fit_result);
   if (atom_.extrinsics().flag(Extrinsics::ESTIMATED))
