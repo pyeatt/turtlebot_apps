@@ -4,6 +4,9 @@
  *  Created on: Oct 19, 2010
  *      Author: erublee
  */
+#include <vector>
+using namespace std;
+
 #include "pano_core/ModelFitter.h"
 #include "pano_core/feature_utils.h"
 using namespace cv;
