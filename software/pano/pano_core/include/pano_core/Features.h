@@ -100,7 +100,7 @@ public:
 
 private:
 
-  void extract(const cv::DescriptorExtractor& extract, const cv::Mat& img);
+  void extract(cv::DescriptorExtractor& extract, const cv::Mat& img);
 
   void copyData(const Features& rhs)
   {
